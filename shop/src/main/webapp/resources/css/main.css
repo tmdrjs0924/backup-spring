@@ -1,0 +1,121 @@
+/* Navbar */
+#navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-black);
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.navbar__logo {
+  font-size: var(--font-medium);
+  font-weight: var(--weight-semi-bold);
+  color: var(--color-white);
+}
+
+.navbar__menu {
+  display: flex;
+}
+
+.navbar__menu__item,
+.navbar__member__item {
+  padding: 8px 12px;
+  margin: 0 3px;
+  color: var(--color-white);
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: var(--size-border-radius);
+}
+
+.navbar__menu__item:hover,
+.navbar__member__item:hover {
+  border-color: var(--color-white);
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+.navbar__serach > input {
+  width: 120px;
+  padding: 10px;
+  border-radius: 50px;
+  border: none;
+}
+.navbar__member {
+  color: var(--color-white);
+  display: flex;
+  list-style: circle;
+}
+.navbar__member > li {
+  padding: 5px;
+}
+
+.navbar__toggle-btn {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-size: 24px;
+  color: var(--color-white);
+  display: none;
+}
+#bottom {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-black);
+  padding: 5px;
+  color: var(--color-white);
+}
+
+#main{
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-light-white);
+  padding: 5px;
+  color: var(--color-black);
+}
+/* For below 1011px screen width */
+@media screen and (max-width: 1011px) {
+  :root {
+    /* Font size */
+    --font-large: 30px;
+    --font-medium: 18px;
+    --font-regular: 16px;
+    --font-small: 14px;
+    --font-micro: 12px;
+  }
+
+  .navbar__toggle-btn {
+    display: block;
+    top: 14px;
+    right: 16px;
+    font-size: var(--font-medium);
+  }
+
+  #navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: var(--color-black);
+    padding: 10px;
+  }
+
+  .navbar__menu,
+  .navbar__member,
+  .navbar__serach {
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    display: none;
+  }
+
+  .navbar__menu.open,
+  .navbar__serach.open,
+  .navbar__member.open {
+    display: block;
+  }
+  

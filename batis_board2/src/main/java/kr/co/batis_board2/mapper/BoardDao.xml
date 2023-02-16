@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybats-3-mapper.dtd">
+  
+  <mapper namespace="kr.co.batis_board2.dao.BoardDao">
+  	<select id="list" resultType="kr.co.batis_board2.dto.BoardDto">
+  		select * from board order by id desc
+  	</select>
+  	
+  	<insert id="write_ok" parameterType="kr.co.batis_board2.dto.BoardDto" >
+  		insert into board(title,content,name,pwd,writeday)
+  		values(#{title},#{content},#{name},#{pwd},now())
+  	</insert>
+  	
+  	<update id="readnum" parameterType="kr.co.batis_board2.dto.BoardDto">
+  		update board set readnum=readnum+1 where id=#{id}  <!-- 매개변수가 하나일 때, #{id}로 가능하다 // 두 개 이상일 때 #{param1} #{param2}... -->
+  	</update>																								 <!-- 매개변수 하나일 때 정수형 에러 => value -->
+
+  	<select id="content" resultType="kr.co.batis_board2.dto.BoardDto">
+  		select * from board where id=#{id}
+  	</select>
+  	
+  	<select id="update" resultType="kr.co.batis_board2.dto.BoardDto" parameterType="kr.co.batis_board2.dto.BoardDto">
+  		select * from board where id=#{id}
+  	</select>
+  	
+  	<update id="update_ok" parameterType="kr.co.batis_board2.dto.BoardDto">
+  		update board set title=#{title},content=#{content},name=#{name} where id=#{id}
+  	</update>
+  	
+  	<delete id="delete" parameterType="kr.co.batis_board2.dto.BoardDto">
+  		delete from board where id=#{id}
+  	</delete>
+  </mapper>

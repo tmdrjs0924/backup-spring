@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybats-3-mapper.dtd">
+  <mapper namespace="kr.co.board_command.board.dao.BoardDao">
+  
+  	<select id="list" resultType="kr.co.board_command.board.dto.BoardDto">
+  		select * from board order by id desc limit #{param}, 10
+  	</select>
+  	
+  	<select id="getChong" resultType="int">
+  		select ceil(count(*)/10) from board
+  	</select>
+  	
+  	<insert id="write_ok" parameterType="kr.co.board_command.board.dto.BoardDto">
+  		insert into board(title,content,name,pwd,bimil,writeday) values(#{title},#{content},#{name},#{pwd},#{bimil},now())
+  	</insert>
+  	
+  	<select id="content" resultType="kr.co.board_command.board.dto.BoardDto">
+  		select * from board where id=#{param}
+  	</select>
+  	
+  	<update id="readnum" parameterType="kr.co.board_command.board.dto.BoardDto">
+  		update board set readnum=readnum+1 where id=#{param}
+  	</update>
+  	
+  	
+  </mapper>

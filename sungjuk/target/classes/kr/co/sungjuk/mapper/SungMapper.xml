@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybats-3-mapper.dtd">
+  <mapper namespace="kr.co.sungjuk.mapper.SungMapper">
+  	
+  	<insert id="write_ok" parameterType="kr.co.sungjuk.vo.SungVo">
+  		insert into sungjuk(name,hakbun,kor,eng,mat,tot,avg,writeday) values(#{name},#{hakbun},#{kor},#{eng},#{mat},#{tot},#{avg},now())
+  	</insert>
+  	
+  	<select id="list" resultType="kr.co.sungjuk.vo.SungVo">
+  		select * from sungjuk order by id asc
+  	</select>
+  	
+  	<delete id="delete" parameterType="kr.co.sungjuk.vo.SungVo">
+  		delete from sungjuk where id=#{id}
+  	</delete>
+  	
+  	<select id="update" resultType="kr.co.sungjuk.vo.SungVo">
+  		select * from sungjuk where id=#{id}
+  	</select>
+  	
+  	<update id="update_ok" parameterType="kr.co.sungjuk.vo.SungVo">
+  		update sungjuk set name=#{name},hakbun=#{hakbun},kor=#{kor},eng=#{eng},mat=#{mat} where id=#{id}
+  	</update>
+  
+  </mapper>

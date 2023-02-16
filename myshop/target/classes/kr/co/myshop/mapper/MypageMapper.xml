@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybats-3-mapper.dtd">
+ 
+<mapper namespace="kr.co.myshop.mapper.MypageMapper">
+	<select id="wishview" resultType="kr.co.myshop.vo.WishVo">
+		select p.pimg, p.title, p.price, w.id, w.writeday, w.pcode from product as p, wish as w where w.pcode=p.pcode and userid=#{param}
+	</select>
+	
+	<delete id="wishdel">
+		delete from wish where id=#{param}
+	</delete>
+	
+	<insert id="cart_add">
+		insert into cart(pcode,userid,su,writeday) values(#{param1},#{param2},1,now())
+	</insert>
+	
+	<select id="cartview" resultType="kr.co.myshop.vo.CartVo">
+		select p.pimg, p.title, p.price, p.halin, p.baesong, c.id, c.writeday, c.pcode, c.su from product as p, cart as c where c.pcode=p.pcode and userid=#{param}
+	</select>
+	
+	<delete id="cartdel">
+		delete from cart where id=#{param}
+	</delete>
+	
+	<select id="cart_check" resultType="int">
+		select count(*) from cart where pcode=#{param1} and userid=#{param2}
+	</select>
+	
+	<update id="cart_up">
+		update cart set su=su+1 where pcode=#{param1} and userid=#{param2}
+	</update>
+	
+	<update id="cart_up2">
+		update cart set su=#{param1} where pcode=#{param2} and userid=#{param3}
+	</update>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybats-3-mapper.dtd">
+  <mapper namespace="kr.co.mapper_test2.board.dao.BoardDao">
+  
+  	<select id="list" resultType="kr.co.mapper_test2.board.dto.BoardDto">
+  		select * from board order by id desc
+  	</select>
+  	
+  	<insert id="write_ok" parameterType="kr.co.mapper_test2.board.dto.BoardDto">
+  		insert into board(title,content,name,pwd,dest,writeday) values(#{title},#{content},#{name},#{pwd},#{dest},now())
+  	</insert>
+  
+  </mapper>
